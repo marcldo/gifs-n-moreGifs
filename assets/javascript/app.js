@@ -1,4 +1,4 @@
-let searchBtns = ["apple", "bunny", "cat", "dog"];
+let searchBtns = ["funny", "meme", "cat", "dog"];
 
 
 makeDefaultButtons(searchBtns);
@@ -23,7 +23,7 @@ function newButton(value) {
     document.getElementById("gifBtn" + value).addEventListener("click", function () {
         let value = this.getAttribute("value");
         let queryURL = buildQueryURL(value);
-        console.log(queryURL);
+        fetchResponse(queryURL);
     });
 
 };
@@ -31,11 +31,35 @@ function newButton(value) {
 function buildQueryURL(value) {
     //takes value from clicked button and generates query url
     let apiKey = "PaANgCm1rb8uwRNoXANJXth7wuGiEIbd";
-    let queryURL = `api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${value}&limit=10`;
+    let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${value}&limit=10`;
     return queryURL;
-}
+};
 
 
+function fetchResponse(queryURL) {
+    fetch(queryURL)
+        .then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            displayResponse(data);
+        });
 
+};
 
+function displayResponse(responseData) {
+    let gifContainer = document.getElementById("gifContainer");
 
+    gifContainer.innerHTML = '';
+
+    for (let i in responseData.data) {
+        let img = document.createElement("img");
+        img.setAttribute("src", responseData.data[i].images.fixed_height.url);
+        gifContainer.appendChild(img);
+
+    };
+};
+
+document.getElementById("userInputBtn").addEventListener("click", function () {
+    let userInput = document.getElementById("userInput").value;
+    newButton(userInput);
+});
