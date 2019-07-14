@@ -42,8 +42,8 @@ function fetchResponse(queryURL) {
             return response.json();
         }).then(function (data) {
             displayResponse(data);
+            console.log(data);
         });
-
 };
 
 function displayResponse(responseData) {
@@ -53,8 +53,16 @@ function displayResponse(responseData) {
 
     for (let i in responseData.data) {
         let img = document.createElement("img");
-        img.setAttribute("src", responseData.data[i].images.fixed_height.url);
+        img.setAttribute("src", responseData.data[i].images.fixed_height_still.url);
+        img.setAttribute("dataStill", responseData.data[i].images.fixed_height_still.url);
+        img.setAttribute("dataAnimate", responseData.data[i].images.fixed_height.url);
+        img.setAttribute("dataState", "still");
+        img.setAttribute("class", "gif");
+        img.setAttribute("id", `gif${i}`);
         gifContainer.appendChild(img);
+
+        document.getElementById(`gif${i}`).addEventListener("click", animateGif);
+
 
     };
 };
@@ -63,3 +71,20 @@ document.getElementById("userInputBtn").addEventListener("click", function () {
     let userInput = document.getElementById("userInput").value;
     newButton(userInput);
 });
+
+function animateGif() {
+    let state = this.getAttribute("dataState");
+    let dataAnimate = this.getAttribute("dataAnimate");
+    let dataStill = this.getAttribute("dataStill");
+    console.log(state);
+
+    if (state === "still") {
+        this.setAttribute("src", dataAnimate);
+        this.setAttribute("dataState", "animate");
+    }
+    else {
+        this.setAttribute("src", dataStill);
+        this.setAttribute("dataState", "still");
+    }
+
+}
