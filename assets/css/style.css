@@ -1,0 +1,54 @@
+.container{
+   display: grid;
+   grid-gap: 3px;
+   grid-template-columns: 1fr;
+   grid-template-rows: auto 50px 1fr auto;
+   grid-template-areas: 
+    "h"
+    "f"
+    "b"
+    "g";
+    
+}
+
+.header{ 
+    width:auto;
+    justify-self: center;
+    grid-area: h;
+    padding-top: 50px;
+}
+
+#logo{
+    height:200px;
+    width: auto;
+    justify-self: center;
+}
+
+.formContainer{ 
+    background-color: azure;
+    justify-self: center;
+    grid-area: f;
+    gri
+}
+#userInput{ 
+    width:300px;
+}
+
+#buttonContainer{
+    background-color: bisque;
+    justify-self: center;
+    grid-area: b;
+}
+
+#gifContainer{
+    background-color: azure;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
+    margin: 20px;
+    grid-area: g;
+}
+
+#gifContainer img{
+    justify-self: center;
+}
