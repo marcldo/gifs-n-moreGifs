@@ -52,16 +52,34 @@ function displayResponse(responseData) {
     gifContainer.innerHTML = '';
 
     for (let i in responseData.data) {
+        let elementContainer = document.createElement("div");
+        elementContainer.setAttribute("class", "elementContainer")
         let img = document.createElement("img");
+        let title = document.createElement("h3");
+        let rating = document.createElement("p");
+
+        //remove the string GIF and trim title to 15 characters
+        let titleTxt = (responseData.data[i].title).replace("GIF", "");
+        let trimmedTitle = titleTxt.length > 18 ?
+            titleTxt.substr(0, 15) + "..." :
+            titleTxt;
+
+        title.textContent = `${trimmedTitle}`;
+        rating.textContent = `Rating: ${responseData.data[i].rating}`;
+
         img.setAttribute("src", responseData.data[i].images.fixed_height_still.url);
         img.setAttribute("dataStill", responseData.data[i].images.fixed_height_still.url);
         img.setAttribute("dataAnimate", responseData.data[i].images.fixed_height.url);
         img.setAttribute("dataState", "still");
         img.setAttribute("class", "gif");
-        img.setAttribute("id", `gif${i}`);
-        gifContainer.appendChild(img);
+        img.setAttribute("id", `gif${i} `);
 
-        document.getElementById(`gif${i}`).addEventListener("click", animateGif);
+        elementContainer.appendChild(img);
+        elementContainer.appendChild(title);
+        elementContainer.appendChild(rating);
+        gifContainer.appendChild(elementContainer);
+
+        document.getElementById(`gif${i} `).addEventListener("click", animateGif);
 
 
     };

@@ -8,7 +8,7 @@
     "f"
     "b"
     "g";
-    
+    font-family: 'Open Sans', sans-serif;
 }
 
 .header{ 
@@ -67,8 +67,23 @@
     padding: 10px
 }
 
-#gifContainer img{
+.elementContainer{
     justify-self: center;
+}
+.elementContainer h3{
+font-size: 12px;
+}
+.elementContainer p{
+    font-size: 11px;
+    }
+
+#gifContainer img{
+    padding-bottom: 10px;
+}
+
+#gifContainer img:hover{
+    
+    box-shadow: 0 0 10px rgb(102, 102, 102);
 }
 
 @media only screen and (max-width: 600px){
@@ -94,7 +109,7 @@
         grid-template-columns: 1fr 1fr;
         grid-gap: 5px;
         margin: 10px;
-        width: 375px;
+        width: 300px;
         overflow: hidden;
     }
     #gifContainer img{
