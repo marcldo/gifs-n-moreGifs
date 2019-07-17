@@ -106,14 +106,16 @@ font-size: 12px;
         height: 20px;
     }
     #gifContainer{
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 5px;
+        grid-template-columns: 50% 50%;
+        /* grid-gap: 20px; */
         margin: 10px;
         width: 300px;
         overflow: hidden;
     }
     #gifContainer img{
         justify-self: center;
-        height: 95px;
+        margin-left: 15px;
+        width: 100%;
+        height: auto;
     }
 }
