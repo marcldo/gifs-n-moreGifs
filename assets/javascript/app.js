@@ -1,4 +1,4 @@
-let searchBtns = ["funny", "meme", "cat", "dog"];
+let searchBtns = ["sponge bob", "patrick", "squidward", "krusty krab"];
 
 
 makeDefaultButtons(searchBtns);
