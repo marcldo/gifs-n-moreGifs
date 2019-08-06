@@ -58,7 +58,7 @@ function displayResponse(responseData) {
         let title = document.createElement("h3");
         let rating = document.createElement("p");
 
-        //remove the string GIF and trim title to 15 characters
+        //remove the string GIF and trim title
         let titleTxt = (responseData.data[i].title).replace("GIF", "");
         let trimmedTitle = titleTxt.length > 18 ?
             titleTxt.substr(0, 15) + "..." :
